@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://unpkg.com/moralis-v1/dist/moralis.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
@@ -84,18 +84,17 @@
 
     <!-- These are the functions, which should sit inside an external .js file -->
     <script>
-
-        // (async function () {
-        //     const serverUrl = "SERVER_URL"
-        //     const appId = "APP_ID"
-        //     await Moralis.start({ serverUrl, appId })
-        // })()
+        (async function(){
+            const serverUrl = "https://sjnbnuwmiez9.usemoralis.com:2053/server"
+            const appId = "Tubhmt2J2WABWIROn7JxeGspuqkLXZeYp1kZiy0h"
+            await Moralis.start({serverUrl, appId})
+        })()
 
         // Initialise server
 
-        const serverUrl = "SERVER_URL"
-        const appId = "APP_ID"
-        Moralis.start({ serverUrl, appId })
+        // const serverUrl = "SERVER_URL"
+        // const appId = "APP_ID"
+        // Moralis.start({ serverUrl, appId })
 
 
         async function postComment() {
@@ -154,7 +153,10 @@
             let result;
 
             try {
-                result = await Moralis.Cloud.run("getData", {});
+                //result = await Moralis.Cloud.run("getData", {});
+                const Note = Moralis.Object.extend("Note");
+                const query = new Moralis.Query(Note);
+                result = await query.find();
             } catch (error) {
                 commentSection.innerHTML = `
                             <p>No comments, you may not have permission to view them</p>
