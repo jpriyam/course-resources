@@ -1,12 +1,12 @@
 // INITIALISE MORALIS
 (async function(){
-    const serverUrl = "SERVER_URL"
-    const appId = "APP_ID"
+    const serverUrl = "https://sjnbnuwmiez9.usemoralis.com:2053/server"
+    const appId = "Tubhmt2J2WABWIROn7JxeGspuqkLXZeYp1kZiy0h"
     await Moralis.start({ serverUrl, appId })
 })();
 
 // -----------CONFIG--------------
-// Have you renamed the index.html or dashboard.html file? 
+// Have you renamed the index.html or dashboard.html file?
 // If yes, update these filenames:
 const loginPage = `index.html`;
 const dashboard = `dashboard.html`;
@@ -34,12 +34,11 @@ let network = '';
 (async function(){
     await Moralis.initPlugins();
     dex = Moralis.Plugins.oneInch;
-    
+
 })();
 
-
 // Reloading app onAccountsChanged and getting new signature
-Moralis.onAccountsChanged(async function (accounts) {
+Moralis.onAccountChanged(async function (accounts) {
     await Moralis.User.logOut();
     document.getElementById("web3apiTitle").click();
     await Moralis.Web3.authenticate();
@@ -112,7 +111,7 @@ logout = async () => {
 
 renderContent = (element) => {
     let elements = ['#transferETH','#transferERC20','#transferNFTs',
-    "#transactionsSection", "#balancesSection", "#nftSection", 
+    "#transactionsSection", "#balancesSection", "#nftSection",
     '#portfolioTracker', '#buyCrypto', '#swapTokens', '#webhooks', '#web3apiTokenSection']
     elements.forEach(e => {
         hideContent(e);
@@ -135,7 +134,7 @@ millisecondsToTime = (ms) => {
     let minutes = Math.floor(ms / (1000 * 60));
     let hours = Math.floor(ms / (1000 * 60 * 60));
     let days = Math.floor(ms / (1000 * 60 * 60 * 24));
-    
+
     if (days < 1) {
         if (hours < 1) {
             if (minutes < 1) {
@@ -168,11 +167,11 @@ getERC20Metadata = async () => {
             document.querySelector('#ERC20TransferContract').value = e.token_address;
             document.querySelector('#ERC20TransferDecimals').value = e.decimals;
         }
-    })   
+    })
 }
 
 getScanTx = (type, id) => {
-    
+
     switch (id) {
         case 1: return `https://etherscan.io/${type}/`;
         case 3: return `https://ropsten.etherscan.io/${type}/`;
@@ -242,8 +241,8 @@ getNativeBalances = async () => {
     const mumbaiBalance = await Moralis.Web3API.account.getNativeBalance({ chain: "mumbai" });
     const bscBalance = await Moralis.Web3API.account.getNativeBalance({ chain: "bsc" });
 
-    
-    
+
+
     // case 1: return "Eth";
     // case 3: return "Ropsten";
     // case 4: return "Rinkeby";
@@ -268,8 +267,8 @@ getNativeBalances = async () => {
             <tr>
                 <th>Ether</th>
                 <td>${(ethBalance.balance / 1e18).toFixed(5)} ETH</td>
-                <td><button 
-                    class="${network==="Eth" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                    class="${network==="Eth" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                     id="btn-send-eth" data-token="eth"}>Transfer Eth
                     </button>
                 </td>
@@ -277,8 +276,8 @@ getNativeBalances = async () => {
             <tr>
                 <th>Ropsten</th>
                 <td>${(ropstenBalance.balance / 1e18).toFixed(5)} ETH</td>
-                <td><button 
-                    class="${network==="Ropsten" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                    class="${network==="Ropsten" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                     id="btn-send-eth" data-token="ropsten">Transfer Ropsten}
                     </button>
                 </td>
@@ -286,8 +285,8 @@ getNativeBalances = async () => {
             <tr>
                 <th>Rinkeby</th>
                 <td>${(rinkebyBalance.balance / 1e18).toFixed(5)} ETH</td>
-                <td><button 
-                    class="${network==="Rinkeby" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                    class="${network==="Rinkeby" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                     id="btn-send-eth" data-token="rinkeby">Transfer Rinkeby}
                     </button>
                 </td>
@@ -295,8 +294,8 @@ getNativeBalances = async () => {
             <tr>
                 <th>Goerli</th>
                 <td>${(goerliBalance.balance / 1e18).toFixed(5)} ETH</td>
-                <td><button 
-                    class="${network==="Goerli" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                    class="${network==="Goerli" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                     id="btn-send-eth" data-token="goerli">Transfer Goerli}
                     </button>
                 </td>
@@ -304,8 +303,8 @@ getNativeBalances = async () => {
             <tr>
                 <th>Kovan</th>
                 <td>${(kovanBalance.balance / 1e18).toFixed(5)} ETH</td>
-                <td><button 
-                    class="${network==="Kovan" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                    class="${network==="Kovan" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                     id="btn-send-eth" data-token="kovan">Transfer Kovan}
                     </button>
                 </td>
@@ -313,8 +312,8 @@ getNativeBalances = async () => {
             <tr>
                 <th>Matic / Polygon</th>
                 <td>${(maticBalance.balance / 1e18).toFixed(5)} MATIC</td>
-                <td><button 
-                class="${network==="Matic" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                class="${network==="Matic" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                 id="btn-send-eth" data-token="matic">Transfer Matic}
                 </button>
             </td>
@@ -322,16 +321,16 @@ getNativeBalances = async () => {
             <tr>
                 <th>Matic / Polygon (test)</th>
                 <td>${(mumbaiBalance.balance / 1e18).toFixed(5)} MATIC</td>
-                <td><button 
-                class="${network==="Mumbai" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                class="${network==="Mumbai" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                 id="btn-send-eth" data-token="mumbai">Transfer Mumbai}
                 </button>
             </tr>
             <tr>
                 <th>BNB (BSC)</th>
                 <td>${(bscBalance.balance / 1e18).toFixed(5)} BNB</td>
-                <td><button 
-                class="${network==="BSC" ? "btn btn-primary" : "btn btn-secondary disabled"}" 
+                <td><button
+                class="${network==="BSC" ? "btn btn-primary" : "btn btn-secondary disabled"}"
                 id="btn-send-eth" data-token="bsc">Transfer BSC}
                 </button>
             </tr>
@@ -346,17 +345,17 @@ getERC20Balances = async () => {
     if(search == ''){ethAddress = _ethAddress;} else{ethAddress = search;}
     let tokens = await Moralis.Web3API.account.getTokenBalances({chain: chainChoice, address: ethAddress });
 
-    
+
     let otherBalancesContent = document.querySelector('#otherBalances');
     otherBalancesContent.innerHTML ='';
-    
+
     console.log(chainChoice);
     if(tokens.length > 0){
         let tokenBalanceContent = '';
         tokens.forEach((e,i) => {
                 console.log(e);
                 let content = `
-    
+
                 <tr>
                 <td>${e.name}</td>
                 <td>${e.symbol}</td>
@@ -367,7 +366,7 @@ getERC20Balances = async () => {
                 `
                 tokenBalanceContent += content
         });
-        otherBalancesContent.innerHTML += tokenBalanceContent; 
+        otherBalancesContent.innerHTML += tokenBalanceContent;
     } else{otherBalancesContent.innerHTML = `<p class="h6 mt-3 mb-3">You have no ERC20 tokens on ${chainChoice}</p>`}
 }
 
@@ -383,10 +382,10 @@ getTransferERC20Balances = async () => {
     let ethTokens = await Moralis.Web3API.account.getTokenBalances();
     let ropstenTokens = await Moralis.Web3API.account.getTokenBalances({chain: 'ropsten'});
     let rinkebyTokens = await Moralis.Web3API.account.getTokenBalances({chain: 'rinkeby'});
-    
+
     let balancesContent = document.querySelector('#transferERC20Balances');
     balancesContent.innerHTML ='';
-    
+
     if(ethTokens.length > 0){
 
     }
@@ -398,7 +397,7 @@ getTransferERC20Balances = async () => {
 
         rinkebyTokens.forEach((e,i) => {
                 let content = `
-    
+
                 <tr>
                 <td>${e.name}</td>
                 <td>${e.symbol}</td>
@@ -407,11 +406,11 @@ getTransferERC20Balances = async () => {
                 <td>${e.token_address}</td>
                 <td><button class="btn btn-primary transfer-button col-md-12" data-decimals="${e.decimals}" data-address="${e.token_address}">Transfer ${e.symbol}</button></td>
                 </tr>
-    
+
                 `
                 tokenBalanceContent += content
         });
-        balancesContent.innerHTML += tokenBalanceContent; 
+        balancesContent.innerHTML += tokenBalanceContent;
 
         setTimeout(function(){
             let theBalances = document.getElementsByClassName('transfer-button');
@@ -439,9 +438,9 @@ getNFTs = async () => {
                 .then(response => response.json())
                 .then(data => {
                     let content = `
-                <div class="card col-md-4" 
-                            data-id="${nft.token_id}" 
-                            data-address="${nft.token_address}" 
+                <div class="card col-md-4"
+                            data-id="${nft.token_id}"
+                            data-address="${nft.token_address}"
                             data-type="${nft.contract_type}">
                     <img src="${fixURL(data.image_url)}" class="card-img-top" height=300>
                         <div class="card-body">
@@ -531,7 +530,7 @@ tokenBalanceLoop = (tokens) => {
             `
             tokenBalanceContent += content
     });
-    return tokenBalanceContent; 
+    return tokenBalanceContent;
 }
 
 displayTransactions = () => renderContent('#transactionsSection');
@@ -563,24 +562,24 @@ transferERC20 = async () => {
     let _address = String(document.querySelector('#ERC20TransferAddress').value);
     let _contract = String(document.querySelector('#ERC20TransferContract').value);
 
-    const options = {type: "erc20", 
-                    amount: Moralis.Units.Token(_amount, _decimals), 
+    const options = {type: "erc20",
+                    amount: Moralis.Units.Token(_amount, _decimals),
                     receiver: _address,
                     contract_address: _contract}
-    let result = await Moralis.transfer(options)    
+    let result = await Moralis.transfer(options)
     console.log(result);
 }
 
 transferNFTs = async () => {
     console.log('transferring NFTs');
-   
+
     let _type = document.querySelector('#nft-transfer-type').value
     let _receiver = document.querySelector('#nft-transfer-receiver').value
     let _address = document.querySelector('#nft-transfer-contract-address').value
     let _id = document.querySelector('#nft-transfer-token-id').value
     let _amount =  document.querySelector('#nft-transfer-amount').value
 
-    const options = {type: _type,  
+    const options = {type: _type,
                  receiver: _receiver,
                  contract_address: _address,
                  token_id: _id,
@@ -630,7 +629,7 @@ function returnAddress(e){
     element.value = address;
 }
 
-// SHOW HIDE PASSWORD - add class to 
+// SHOW HIDE PASSWORD - add class to
 
 function ShowHidePass() {
     console.log('clicked');
@@ -670,8 +669,8 @@ if (window.location.pathname.endsWith(dashboard)){
     document.querySelector('#getAddress-getNFTs').onclick = returnAddress
     document.querySelector('#getNFTsForContract_getEthAddress').onclick = returnAddress
     document.querySelector('#getNFTTransfers_getEthAddress').onclick = returnAddress
-    
-    
+
+
 
 
     // Side Menu Part 2
@@ -680,20 +679,20 @@ if (window.location.pathname.endsWith(dashboard)){
     document.querySelector('#transfer-nfts').onclick = displaytransferNFTs;
     document.querySelector('#ETHTransferButton').onclick = transferETH;
     document.querySelector('#ERC20TransferButton').onclick = transferERC20;
-    document.querySelector('#btn-get-transactions2').onclick = getTransferNFTs;   
+    document.querySelector('#btn-get-transactions2').onclick = getTransferNFTs;
     document.querySelector('#btn-transfer-selected-nft').onclick = transferNFTs;
     document.querySelector('#transferERC20GetBalances').onclick = getTransferERC20Balances;
-    
+
     // Side Menu Part 3
     document.querySelector('#portfolio-tracker').onclick = displayPortfolioTracker;
     document.querySelector('#buy-crypto').onclick = displayBuyCrypto;
     document.querySelector('#swap-tokens').onclick = displaySwapTokens;
     document.querySelector('#webhook-alerts').onclick = displayAlerts;
     document.querySelector('#launch-onramper').onclick = buycrypto;
-    
 
 
-    // For Loop 
+
+    // For Loop
     let buttons = document.getElementsByClassName('clearButton')
     for (var i = 0; i <= buttons.length - 1; i += 1) {
         buttons[i].onclick = function(e) {

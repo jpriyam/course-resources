@@ -22,7 +22,7 @@
     <link href="style.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://unpkg.com/moralis-v1/dist/moralis.js"></script>
 
     <!-- Custom styles for this template -->
   </head>
@@ -185,7 +185,7 @@
                     <input type="text" class="form-control" placeholder="Offset (optional)" id="getTransactions-offset">
                     <input type="text" class="form-control" placeholder="Limit (optional)" id="getTransactions-limit">
                   </div>
-                  
+
                   <div class="the-buttons my-3">
                     <button class="btn btn-primary col-md-4 mb-1" id="btn-get-transactions">Get Transactions</button>
                     <button class="btn btn-primary col-md-4 mb-1 clearButton" name="tableOfTransactions">Clear
@@ -296,7 +296,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Search ERC-20 Token Balances of Another Address -->
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingFour">
@@ -472,7 +472,7 @@
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="getNFTTransfers-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-getNFTTransfers-1" aria-expanded="false" aria-controls="collapse-getNFTTransfers-1">
-                          Get NFT Transfers 
+                          Get NFT Transfers
                         </button>
                       </h2>
                       <div id="collapse-getNFTTransfers-1" class="accordion-collapse collapse" aria-labelledby="getNFTs-headingOne" data-bs-parent="#accordian-nft">
@@ -523,7 +523,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="getNFTsForContract-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-getNFTsForContract" aria-expanded="false" aria-controls="collapse-getNFTsForContract">
@@ -628,7 +628,7 @@
                           <p>0xb0557906c617f0048a700758606f64b33d0c41a6</p>
                         </div>
                       </div>
-                    </div>  
+                    </div>
 
                     <!-- Get Token Metadata By Symbol -->
                     <div class="accordion-item">
@@ -760,7 +760,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Get NFT Metadata  -->
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="getNFTMetadata-header">
@@ -795,7 +795,7 @@
                         </div>
                       </div>
                     </div>
-                  
+
                     <!-- Get NFT Owners -->
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="getNFTOwners-header">
@@ -913,7 +913,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- getTokenIdMetadata  -->
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="getTokenIdMetadata-header">
@@ -1028,7 +1028,7 @@
                             <input type="text" class="form-control" placeholder="Format (optional) choose hex or decimal (default)" id="getWalletTokenIdTransfers-format">
                             <input type="text" class="form-control" placeholder="Offset the results (optional)" id="getWalletTokenIdTransfers-offset">
                             <input type="text" class="form-control" placeholder="Limit the results (optional)" id="getWalletTokenIdTransfers-limit">
-                            <input type="text" class="form-control" placeholder="Order (optional) example block_number.ASC" id="getWalletTokenIdTransfers-order">                          
+                            <input type="text" class="form-control" placeholder="Order (optional) example block_number.ASC" id="getWalletTokenIdTransfers-order">
                           </div>
                           <div class="the-buttons my-3">
                             <button class="btn btn-primary col-md-4" id="btn_getWalletTokenIdTransfers">Get Transfers (console log)</button>
@@ -1045,7 +1045,7 @@
                   </div>
 
                     <div class="accordion my-5" id="accordian-otherWeb3-api">
-  
+
                       <!-- Resolve Domain -->
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="resolveDomain-header">
@@ -1058,7 +1058,7 @@
                           <div class="accordion-body">
                             <div class="col-md-6 offset-md-3 my-3 container">
                               <p>You need a function and a click listener</p>
-                              
+
                               <input type="text" class="form-control" placeholder="Address (required)" id="resolveDomain-addresses">
                               <div id="resolveDomain-content" class="text-center"></div>
                             </div>
@@ -1066,7 +1066,7 @@
                               <button class="btn btn-primary col-md-4" id="btn_resolveDomain">Resolve Domain</button>
                             </div>
                           </div>
-                        </div>  
+                        </div>
                       </div>
 
                       <!-- DeFi getPairAddress  -->
@@ -1242,7 +1242,7 @@
 
                   </div>
                 </div>
-                
+
                 <div class="container">
                   <div class="form-group col-md-6">
                     <select class="form-select" aria-label="Default select example" id="nft-transfer-type">
@@ -1298,7 +1298,7 @@
                       <p>Use this to keep a track of the value of your portfolio. You may have various tokens and coins spread out in various wallets and protocols and it's tricky to get an overall 'balance' of the collection. So you can use this tool to add the tokens you have (current displays tokens from the ~top250 on coingecko). </p>
                       <p>You MUST save your changes, otherwise you will lose your progress if the app refreshes.</p>
                       <p>You can recall your portfolio when you are logged in with the relevant MetaMask account you used to create the portfolio</p>
-                      
+
                   </div>
                 </div>
                 <div class="container main-buttons d-flex col-md-6 justify-content-around">
@@ -1306,17 +1306,17 @@
                   <button class="btn btn-secondary button-group" id="btn-add">Add Token</button>
                   <button class="btn btn-secondary button-group" id="btn-save">Save Changes</button>
                 </div>
-                
+
                 <div class="appBody container">
                   <div class="appContentHeader"></div>
                   <div class="appContent"></div>
                 </div>
-                
+
                 <div id="portfolio-value" class="container">
                   <div class="mt-4" id="values"></div>
-                </div>           
+                </div>
               </div>
-              
+
               <div id="buyCrypto">
                 <div class="jumbotron jumbotron-fluid">
                   <div class="container">
@@ -1325,7 +1325,7 @@
                   </div>
                 </div>
                 <div class="container">
-                  
+
                   <div id="buyCrypto-iframe" class="table-responsive">
                     <!-- <iframe id="fiat-iframe" src="" frameborder="0"  allow="accelerometer; autoplay; camera; gyroscope; payment"></iframe> -->
                     <h3>Does not load in an iframe</h3>
@@ -1402,7 +1402,7 @@
 
                 </div>
               </div>
-              
+
               <div id="webhooks">
                 <div class="jumbotron jumbotron-fluid">
                   <div class="container">
@@ -1411,7 +1411,7 @@
                 </div>
                 <div class="container">
                   <p>COMING SOON</p>
-    
+
                   <div class="the-buttons">
                   </div>
                   <div id="webhookContent" class="table-responsive d-flex flex-wrap"></div>
@@ -1437,8 +1437,8 @@
       integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
       crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
-    <script src="coin-list.js"></script> 
-    <script src="tokens.js"></script> 
+    <script src="coin-list.js"></script>
+    <script src="tokens.js"></script>
     <script src="main.js"></script>
     <script src="dex.js"></script>
     <script src="portfolio-tracker.js"></script>
